@@ -15,7 +15,7 @@ public class UserService {
     }
     
     public User getUserById(Long id) {
-        return userRepository.findById(id);
+        return userRepository.findById(id).orElse(null);
     }
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -28,7 +28,7 @@ public class UserService {
     public void updateUser(User user) {
         // Aquí iría la lógica para actualizar un usuario, como validar datos, encriptar la contraseña si se ha cambiado, etc.
 
-        userRepository.update(user);
+        userRepository.save(user);
     }
     public void deleteUser(Long id) {
         userRepository.deleteById(id);

@@ -36,7 +36,7 @@ public class User {
     @Column(name = "cpassword_hash", nullable = false, length = 255)
     private String cpasswordHash;
 
-    @ManyToOne(fetch = FetchType.LAZY)// solo se cargará el rol cuando se acceda a él, no al cargar el usuario
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "nrole_id")
     private UserRole role;
 
