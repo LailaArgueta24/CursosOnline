@@ -12,13 +12,13 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "TBL_PAYMENTS")
+@Table(name = "TBL_CART")
 @Data
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ncart_id", nullable = false)
-    private Long ncartId;
+    private Integer ncartId;
 
     @ManyToOne
     @JoinColumn(name = "nuser_id", nullable = false)

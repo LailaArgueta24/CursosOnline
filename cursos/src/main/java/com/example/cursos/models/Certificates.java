@@ -19,11 +19,11 @@ public class Certificates {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ncertificate_id", nullable = false)
-    private Long ncertificateId;
+    private Integer ncertificateId;
 
     @ManyToOne
     @JoinColumn(name = "nenrollment_id", nullable = false)
-    private Enrollment nenrollmentId;
+    private Enrollment enrollment;
 
     @Column(name = "cvalidation_code", length = 64, nullable = false)
     private String cvalidationCode;

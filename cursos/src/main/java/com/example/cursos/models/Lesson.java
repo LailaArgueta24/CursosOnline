@@ -14,7 +14,7 @@ import lombok.Data;
 public class Lesson {
     @Id
     @Column(name = "nlesson_id", nullable = false)
-    private Long nlessonId;
+    private Integer nlessonId;
 
     @ManyToOne
     @JoinColumn(name = "nmodule_id", nullable = false)

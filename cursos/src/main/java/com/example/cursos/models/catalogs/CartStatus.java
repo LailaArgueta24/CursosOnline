@@ -13,7 +13,7 @@ import lombok.Data;
 public class CartStatus {
     @Id
     @Column(name = "ncart_status_id", nullable = false)
-    private Long ncartStatusId;
+    private Integer ncartStatusId;
 
     @Column(name = "cstatus_code", nullable = false, length = 50, unique = true)
     private String cstatusCode;

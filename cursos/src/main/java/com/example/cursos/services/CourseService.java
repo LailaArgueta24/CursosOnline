@@ -12,7 +12,7 @@ public class CourseService {
     public CourseService(CourseRepository courseRepository){
         this.courseRepository = courseRepository;
     }
-    public Course getCourseById(Long id) {
+    public Course getCourseById(Integer id) {
         return courseRepository.findById(id).orElse(null);
     }
     public List<Course> getAllCourses() {

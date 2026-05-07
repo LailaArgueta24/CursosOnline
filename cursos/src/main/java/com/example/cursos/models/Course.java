@@ -5,16 +5,26 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.Table;
 import lombok.Data;
+import java.math.BigDecimal;
+import java.util.Set;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "TBL_COURSES")
 @Data
 public class Course {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ncourse_id")
-    private Long ncourseId;
+    private Integer ncourseId;
 
     @Column(name = "ctitle", nullable = false, length = 200)
     private String ctitle;
@@ -27,7 +37,14 @@ public class Course {
     // private Instructor instructor;
 
     @Column(name = "ncourse_status_id")
-    private Long ncourseStatusId;
+    private Integer ncourseStatusId;
+
+    @ManyToOne
+    @JoinColumn(name = "ninstructor_id", nullable = false)
+    private Instructor instructor;
+
+    @Column(name = "mprice")
+    private BigDecimal mprice;
 
     @Column(name = "bhabilited")
     private Boolean bhabilited = true;
@@ -40,4 +57,10 @@ public class Course {
 
     @Column(name = "ddeleted_at")
     private LocalDateTime ddeletedAt;
+
+    @ManyToMany
+    @JoinTable(name = "TBL_COURSE_CATEGORIES",
+        joinColumns = @JoinColumn(name = "ncourse_id"),
+        inverseJoinColumns = @JoinColumn(name = "ncategory_id"))
+    private Set<CourseCategory> categories;
 }

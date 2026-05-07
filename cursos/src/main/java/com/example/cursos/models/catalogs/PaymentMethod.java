@@ -13,7 +13,7 @@ import lombok.Data;
 public class PaymentMethod {
     @Id
     @Column(name = "npayment_method_id", nullable = false)
-    private Long npaymentMethodId;
+    private Integer npaymentMethodId;
     
     @Column(name = "cmethod_code", nullable = false, length = 50, unique = true)
     private String cmethodCode;

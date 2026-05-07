@@ -36,7 +36,7 @@ public class CourseController {
         })
     @GetMapping("/{id}")
         public Course getCourseById(
-            @Parameter(description = "ID del curso", example = "1") @PathVariable Long id
+            @Parameter(description = "ID del curso", example = "1") @PathVariable Integer id
         ) {
         return courseService.getCourseById(id);
     }

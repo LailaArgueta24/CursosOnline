@@ -1,4 +1,5 @@
 package com.example.cursos.models;
+
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -7,32 +8,25 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "TBL_REVIEWS")
+@Table(name = "TBL_INSTRUCTORS")
 @Data
-public class Reviews {
+public class Instructor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "nreview_id", nullable = false)
-    private Integer nreviewId;
+    @Column(name = "ninstructor_id", nullable = false)
+    private Integer ninstructorId;
 
-    @ManyToOne
-    @JoinColumn(name = "ncourse_id", nullable = false)
-    private Course course;
-
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "nuser_id", nullable = false)
     private User user;
 
-    @Column(name = "nrating", nullable = false)
-    private Integer nrating;
-    
-    @Column(name = "ccomment", length = 500)
-    private String ccomment;
+    @Column(name = "cbiography", length = 500)
+    private String cbiography;
 
     @Column(name = "bhabilited")
     private Boolean bhabilited = true;

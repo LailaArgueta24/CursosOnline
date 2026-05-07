@@ -14,7 +14,7 @@ import lombok.Data;
 public class EnrollmentStatus {
     @Id
     @Column(name = "nenrollment_status_id")
-    private Long nenrollmentStatusId;
+    private Integer nenrollmentStatusId;
 
     @Column(name = "cstatus_code", nullable = false, length = 50, unique = true)
     private String cstatusCode;

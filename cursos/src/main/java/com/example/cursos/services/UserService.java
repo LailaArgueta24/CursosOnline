@@ -14,7 +14,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
     
-    public User getUserById(Long id) {
+    public User getUserById(Integer id) {
         return userRepository.findById(id).orElse(null);
     }
     public List<User> getAllUsers() {
@@ -30,7 +30,7 @@ public class UserService {
 
         userRepository.save(user);
     }
-    public void deleteUser(Long id) {
+    public void deleteUser(Integer id) {
         userRepository.deleteById(id);
     }
 

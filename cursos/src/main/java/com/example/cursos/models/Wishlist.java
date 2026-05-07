@@ -1,6 +1,7 @@
 package com.example.cursos.models;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -15,35 +16,34 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "TBL_CART_ITEMS")
+@Table(name = "TBL_WISHLIST")
 @Data
-public class CartItems {
+public class Wishlist {
     @EmbeddedId
-    private CartItemsKey id;
+    private WishlistKey id;
 
     @ManyToOne
-    @MapsId("cartId")
-    @JoinColumn(name = "ncart_id", nullable = false)
-    private Cart cart;
+    @MapsId("studentId")
+    @JoinColumn(name = "nstudent_id", nullable = false)
+    private Student student;
 
     @ManyToOne
     @MapsId("courseId")
     @JoinColumn(name = "ncourse_id", nullable = false)
     private Course course;
 
-    @Column(name = "mprice", nullable = false)
-    private Double price;
+    @Column(name = "dcreated_at")
+    private LocalDateTime dcreatedAt;
 
     @Embeddable
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class CartItemsKey implements Serializable {
-        @Column(name = "ncart_id")
-        private Integer cartId;
+    public static class WishlistKey implements Serializable {
+        @Column(name = "nstudent_id")
+        private Integer studentId;
 
         @Column(name = "ncourse_id")
         private Integer courseId;
     }
-
 }

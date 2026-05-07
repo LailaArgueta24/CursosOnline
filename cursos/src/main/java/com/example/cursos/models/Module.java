@@ -14,7 +14,7 @@ import lombok.Data;
 public class Module {
     @Id
     @Column(name = "nmodule_id", nullable = false)
-    private Long nmoduleId;
+    private Integer nmoduleId;
 
     @Column(name = "ctitle", nullable = false, length = 150)
     private String ctitle;

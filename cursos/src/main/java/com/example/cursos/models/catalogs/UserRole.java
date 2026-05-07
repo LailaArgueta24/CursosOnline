@@ -14,7 +14,7 @@ import lombok.Data;
 public class UserRole {
     @Id
     @Column(name = "nrole_id")
-    private Long nroleId;
+    private Integer nroleId;
 
     @Column(name = "crole_code", nullable = false, length = 50, unique = true)
     private String croleCode;

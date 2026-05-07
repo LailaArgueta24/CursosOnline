@@ -1,26 +1,29 @@
-package com.example.cursos.models.catalogs;
+package com.example.cursos.models;
 
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "CAT_COURSE_STATUS")
+@Table(name = "TBL_STUDENTS")
 @Data
-public class CourseStatus {
+public class Student {
     @Id
-    @Column(name = "ncourse_status_id", nullable = false)
-    private Integer ncourseStatusId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "nstudent_id", nullable = false)
+    private Integer nstudentId;
 
-    @Column(name = "cstatus_code", nullable = false, length = 50, unique = true)
-    private String cstatusCode;
-
-    @Column(name = "cstatus_name", nullable = false, length = 100, unique = true)
-    private String cstatusName;
+    @OneToOne
+    @JoinColumn(name = "nuser_id", nullable = false)
+    private User user;
 
     @Column(name = "bhabilited")
     private Boolean bhabilited = true;
@@ -33,5 +36,4 @@ public class CourseStatus {
 
     @Column(name = "ddeleted_at")
     private LocalDateTime ddeletedAt;
-
 }
