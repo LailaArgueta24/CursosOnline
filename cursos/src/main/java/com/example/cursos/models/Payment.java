@@ -43,7 +43,7 @@ public class Payment {
     private LocalDateTime paymentDate;
 
     @Column(name = "bhabilited")
-    private Boolean bhabilited = true;
+private Boolean bhabilited = true;
 
     @Column(name = "dcreated_at", updatable = false)
     private LocalDateTime dcreatedAt;

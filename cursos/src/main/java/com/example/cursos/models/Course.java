@@ -32,10 +32,6 @@ public class Course {
     @Column(name = "cdescription")
     private String cdescription;
 
-    // @ManyToOne
-    // @JoinColumn(name = "ninstructor_id")
-    // private Instructor instructor;
-
     @Column(name = "ncourse_status_id")
     private Integer ncourseStatusId;
 

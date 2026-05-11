@@ -33,4 +33,8 @@ public class UserRole {
 
     @Column(name = "ddeleted_at")
     private LocalDateTime ddeletedAt;
+
+    public String getCroleName() {
+        return croleName;
+    }
 }
