@@ -15,7 +15,6 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.util.Set;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "TBL_COURSES")

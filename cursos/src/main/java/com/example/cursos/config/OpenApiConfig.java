@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
                 contact = @Contact(name = "Equipo", email = "319128411@pcpuma.acatlan.unam.mx")
         ),
         servers = {
-                @Server(url = "http://localhost:8081", description = "Servidor local")
+                @Server(url = "http://localhost:8080", description = "Servidor local")
         }
 )
 public class OpenApiConfig {

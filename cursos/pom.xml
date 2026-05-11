@@ -57,12 +57,12 @@
             <scope>provided</scope>
         </dependency>
 
-		<!-- 
+		<!-- MongoDB Driver -->  
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mongodb</artifactId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency> 
-		-->
+
 		<!-- JTW -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
@@ -86,6 +86,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 	    </dependency>   
+
         <!-- Validaciones  -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

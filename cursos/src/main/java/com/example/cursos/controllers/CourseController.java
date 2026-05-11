@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.cursos.dtos.CourseDto;
 import com.example.cursos.models.Course;
 import com.example.cursos.services.CourseService;
 
@@ -21,7 +22,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Courses", description = "Operaciones para consultar cursos")
 @RestController
-@RequestMapping("/courses")
+@RequestMapping("api/courses")
 public class CourseController {
     private final CourseService courseService;
     public CourseController(CourseService courseService){
@@ -34,6 +35,7 @@ public class CourseController {
                 content = @Content(mediaType = "application/json", schema = @Schema(implementation = Course.class))),
             @ApiResponse(responseCode = "404", description = "Curso no encontrado", content = @Content)
         })
+        
     @GetMapping("/{id}")
         public Course getCourseById(
             @Parameter(description = "ID del curso", example = "1") @PathVariable Integer id
@@ -47,8 +49,9 @@ public class CourseController {
                 content = @Content(mediaType = "application/json",
                     array = @ArraySchema(schema = @Schema(implementation = Course.class))))
         })
+
     @GetMapping
-    public List<Course> getAllCourses() {
+    public List<CourseDto> getAllCourses() {
         return courseService.getAllCourses();
     }   
 }
