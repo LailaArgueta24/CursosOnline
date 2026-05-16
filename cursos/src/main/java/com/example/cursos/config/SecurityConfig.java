@@ -23,11 +23,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception 
     {
         return http 
+            .cors(config -> config.disable())
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authRequest -> authRequest
-                .requestMatchers("/auth/**", "/api/auth/**").permitAll()
-                //.anyRequest().authenticated()
-                .anyRequest().permitAll()
+                .requestMatchers("/auth/**", "/api/auth/**", "/api/courses/**", "/api/courses/1/**").permitAll()
+                .anyRequest().authenticated()
             )
             .sessionManagement(sessionManager -> sessionManager
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS))

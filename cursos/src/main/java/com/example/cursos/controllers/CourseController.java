@@ -2,11 +2,13 @@ package com.example.cursos.controllers;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.cursos.dtos.CourseDetailDto;
 import com.example.cursos.dtos.CourseDto;
 import com.example.cursos.models.Course;
 import com.example.cursos.services.CourseService;
@@ -37,10 +39,10 @@ public class CourseController {
         })
         
     @GetMapping("/{id}")
-        public Course getCourseById(
+        public ResponseEntity<CourseDetailDto> getCourseById(
             @Parameter(description = "ID del curso", example = "1") @PathVariable Integer id
         ) {
-        return courseService.getCourseById(id);
+        return ResponseEntity.ok(courseService.getCourseById(id));
     }
 
         @Operation(summary = "Listar todos los cursos", description = "Devuelve la lista completa de cursos")
