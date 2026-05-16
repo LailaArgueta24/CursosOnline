@@ -8,5 +8,6 @@ import com.example.cursos.models.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> findByNuserId(Integer nuserId);
+    Optional<User> findByCemail(String cemail);
     Optional<User> findByCuser(String cuser);
 }

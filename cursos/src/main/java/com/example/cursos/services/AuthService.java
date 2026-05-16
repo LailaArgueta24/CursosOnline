@@ -28,15 +28,17 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     
     public AuthResponse login(LoginRequest request) {
-        authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(
-                request.getCuser(),
-                request.getCpasswordHash()
-            )
-        );
-        UserDetails userDetails = userRepository.findByCuser(request.getCuser())
+        // Buscar usuario por email
+        User user = userRepository.findByCemail(request.getCemail())
             .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        String token = jwtService.getToken(userDetails);
+        
+        // Validar contraseña
+        if (!passwordEncoder.matches(request.getCpasswordHash(), user.getCpasswordHash())) {
+            throw new IllegalArgumentException("Invalid credentials");
+        }
+        
+        // Generar token
+        String token = jwtService.getToken(user);
         return AuthResponse.builder()
             .token(token)
             .build();
@@ -44,6 +46,13 @@ public class AuthService {
     public AuthResponse register(RegisterRequest request) {
         if (request.getNroleId() == null) {
             throw new IllegalArgumentException("nroleId is required");
+        }
+        // Validar duplicados
+        if (userRepository.findByCemail(request.getCemail()).isPresent()) {
+            throw new com.example.cursos.exception.DuplicateResourceException("cemail", "Email already exists");
+        }
+        if (request.getCuser() != null && userRepository.findByCuser(request.getCuser()).isPresent()) {
+            throw new com.example.cursos.exception.DuplicateResourceException("cuser", "Username already exists");
         }
 
         UserRole selectedRole = userRoleRepository.findById(request.getNroleId())
